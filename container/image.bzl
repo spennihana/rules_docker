@@ -423,7 +423,7 @@ def _impl(
         )
 
     # Construct a temporary name based on the build target.
-    tag_name = "{}:{}".format(_repository_name(ctx), tag if tag != None else name)
+    tag_name = "{}:{}".format(_repository_name(ctx), tag)
 
     # These are the constituent parts of the Container image, which each
     # rule in the chain must preserve.
