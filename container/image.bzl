@@ -338,6 +338,7 @@ def _impl(
     output_layer = output_layer or ctx.outputs.layer
     null_cmd = null_cmd or ctx.attr.null_cmd
     null_entrypoint = null_entrypoint or ctx.attr.null_entrypoint
+    tag = tag or ctx.attr.tag or name
 
     # If this target specifies docker_run_flags, they are always used.
     # Fall back to the base image's run flags if present, otherwise use the default value.
