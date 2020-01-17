@@ -295,7 +295,7 @@ def _impl(
         output_layer = None,
         workdir = None,
         null_cmd = None,
-        null_entrypoint = None
+        null_entrypoint = None,
         tag = None):
     """Implementation for the container_image rule.
 
@@ -423,7 +423,7 @@ def _impl(
         )
 
     # Construct a temporary name based on the build target.
-    tag_name = "{}:{}".format(_repository_name(ctx), tag if tag is not None else name)
+    tag_name = "{}:{}".format(_repository_name(ctx), tag if tag != None else name)
 
     # These are the constituent parts of the Container image, which each
     # rule in the chain must preserve.
