@@ -244,6 +244,9 @@ def _image_config(
 
 def _repository_name(ctx):
     """Compute the repository name for the current rule."""
+    if ctx.attr.no_label:
+      return ctx.attr.repository
+
     if ctx.attr.legacy_repository_naming:
         # Legacy behavior, off by default.
         return _join_path(ctx.attr.repository, ctx.label.package.replace("/", "_"))
@@ -542,6 +545,7 @@ _attrs = dicts.add(_layer.attrs, {
     "null_entrypoint": attr.bool(default = False),
     "ports": attr.string_list(),  # Skylark doesn't support int_list...
     "repository": attr.string(default = "bazel"),
+    "no_label": attr.bool(default = False),
     "stamp": attr.bool(default = False),
     "user": attr.string(),
     "volumes": attr.string_list(),
